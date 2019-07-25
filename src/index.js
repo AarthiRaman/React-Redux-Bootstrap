@@ -1,23 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 
-import Container from "react-bootstrap/Container";
-
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import App from "./components/App";
 
 import "./styles.css";
 
-function App() {
-  return (
-    <div className="App">
-      <Container>
-        <Header />
-        <Footer />
-      </Container>
-    </div>
-  );
-}
+const Widget = () => (
+  <div>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </div>
+);
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<Widget />, document.getElementById("root"));

@@ -1,10 +1,29 @@
 import React from "react";
-import styled from "styled-components";
 
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
 import Figure from "react-bootstrap/Figure";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
-const PhotoGallery = ({}) => <Container> User Home</Container>;
+const PhotosList = ({ photosList }) => (
+<Container xs={6} md={9}>
+    <h4>Latest Photos</h4>
+    <Row >
+    {
+        photosList && photosList.map((photo) => <Col md={3} sm={3}>
+        <Figure>
+            <Figure.Image
+                width={171}
+                height={180}
+                alt={photo.title}
+                src={photo.thumbnailUrl}
+            />
 
-export default PhotoGallery;
+        </Figure>
+        </Col>)
+    }
+    </Row>
+   
+</Container>)
+    
+export default PhotosList;

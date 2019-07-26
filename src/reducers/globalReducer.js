@@ -2,7 +2,7 @@ import { ON_LOGIN_CLICK } from "../constants/actionTypes";
 
 const initialState = {
   isLoggedIn: false,
-  userId: ""
+  user: {}
 };
 
 export default function globalReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export default function globalReducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: true,
-        userId: action.userId
+        user: action.user
       };
 
     default:

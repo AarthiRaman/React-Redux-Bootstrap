@@ -9,19 +9,18 @@ import Home from "./containers/Home/Home";
 
 import { onLogin } from "../actions/loginActions";
 
-function App({ i18n, global, dispatchedOnLogin }) {
+function App({ i18n, globalData, dispatchedOnLogin }) {
   return (
     <div className="App">
       <Header
         onLogin={dispatchedOnLogin}
         i18n={i18n}
-        isLoggedIn={global.isLoggedIn}
-        userId={global.userId}
+        isLoggedIn={globalData.isLoggedIn}
+        userId={globalData.user.username}
       />
 
-      {global.isLoggedIn && <UserHome />}
-      {!global.isLoggedIn && <Home />}
-      <Footer />
+      {globalData.isLoggedIn && <UserHome />}
+      {!globalData.isLoggedIn && <Home />}
     </div>
   );
 }
@@ -30,9 +29,9 @@ const mapDispatchToProps = {
   dispatchedOnLogin: onLogin
 };
 
-const mapStateToProps = ({ i18n, global }) => ({
+const mapStateToProps = ({ i18n, globalData }) => ({
   i18n,
-  global
+  globalData
 });
 
 export default connect(

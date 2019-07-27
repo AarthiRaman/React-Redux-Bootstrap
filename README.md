@@ -9,7 +9,7 @@ npm i
 npm start
 ```
 
-## Feature
+## Features
 
 1. Home Page
 
@@ -38,5 +38,6 @@ npm start
 
 ## Demo URL
 
-[Code Sandbox](https://oj6kn.csb.app/)
-[Project Link](https://codesandbox.io/s/react-redux-bootstrap-4534634-0ng12)
+1. [Code Sandbox](https://oj6kn.csb.app/)
+
+2. [Project Link](https://codesandbox.io/s/react-redux-bootstrap-4534634-0ng12)

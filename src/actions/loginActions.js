@@ -1,39 +1,44 @@
 import { 
   ON_LOGIN_CLICK,
-  LOAD_USER_PHOTOS
+  LOAD_USER_PHOTOS,
+  LOAD_USER_COMMENTS
 } from "../constants/actionTypes";
-import {
-  USER_URL,
-  PHOTO_URL,
-  COMMENTS_URL
-} from "../constants/config";
 
 export function onLogin(){
   return (dispatch, getState) => {
 
-    fetch(USER_URL)
-      .then(response => response.json())
-      .then(userData => {
+    const {
+      USER_URL,
+      PHOTO_URL,
+      COMMENTS_URL
+    } = getState().config;
+
+    async function getAsyncData(url) 
+    {
+      let response = await fetch(url);
+      let data = await response.json()
+      return data;
+    }
+
+    getAsyncData(USER_URL).then(userData => {
         dispatch({
           type: ON_LOGIN_CLICK,
           user: userData
         });
       });
 
-      fetch(PHOTO_URL)
-      .then(response => response.json())
-      .then(photoData => {
-        dispatch({
-          type: LOAD_USER_PHOTOS,
-          recentPhotos: photoData 
-        });
-    
+    getAsyncData(PHOTO_URL).then(photoData => {
+      dispatch({
+        type: LOAD_USER_PHOTOS,
+        recentPhotos: Array.from(photoData).slice(0, 10)
       });
-
-      fetch(COMMENTS_URL)
-      .then(response => response.json())
-      .then(commentsData => {
-        console.log(commentsData);
-      })
+    });
+      
+    getAsyncData(COMMENTS_URL).then(commentsData => {
+      dispatch({
+        type: LOAD_USER_COMMENTS,
+        recentComments: Array.from(commentsData).slice(0, 10)
+      });
+    });
   }
 }

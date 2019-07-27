@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
@@ -8,7 +9,7 @@ import Col from "react-bootstrap/Col";
 
 import PhotoGallery from "../../commonComponents/PhotoGallery/PhotoGallery";
 import Followers from "../../commonComponents/Followers/Followers";
-import StyledModal from "../../commonComponents/ModalWindow/ModalWindow";
+import ModalWindow from "../../commonComponents/ModalWindow/ModalWindow";
 
 import {
   toggleModal
@@ -16,7 +17,7 @@ import {
 
 import { connect } from "react-redux";
 
-const UserHome = ({ globalData, activity, dispatchToggleModal }) => {
+const UserHome = ({ globalData, activity, dispatchToggleModal, i18n }) => {
   const {
     modalContent,
     showModal
@@ -25,10 +26,10 @@ const UserHome = ({ globalData, activity, dispatchToggleModal }) => {
   return <div>
     <Jumbotron>
       <Container>
-        <h1>Hey {globalData.user.username} !</h1>
-        <h4>Check out your recent activity</h4>
+        <h1>{i18n.banner} {globalData.user.username} !</h1>
+        <h4>{i18n.subText}</h4>
         <p>
-          <Button variant="primary">Go to Albums</Button>
+          <Button variant="primary">{i18n.bannerButton}</Button>
         </p>
       </Container>
     </Jumbotron>
@@ -36,18 +37,17 @@ const UserHome = ({ globalData, activity, dispatchToggleModal }) => {
     <Container>
     <Row>
       <Col sm={12} md={9} >
-        <PhotoGallery photosList={activity.recentPhotos} onPhotoClick={dispatchToggleModal} /> 
+        <PhotoGallery i18n={i18n} photosList={activity.recentPhotos} onPhotoClick={dispatchToggleModal} /> 
       </Col>
       <Col sm={12} md={3} >
-        <Followers commentsList={activity.recentPhotos} /> 
-      </Col>
-      <Col>
-      
+        <Followers i18n={i18n} commentsList={activity.recentComments} /> 
       </Col>
     </Row> 
     </Container>
-    <StyledModal modalContent={modalContent} 
+
+    <ModalWindow modalContent={modalContent} 
       showModal={showModal} 
+      i18n={i18n}
       onModalClose={dispatchToggleModal} />
   </div>
 };
@@ -58,10 +58,19 @@ const mapDispatchToProps = {
 
 const mapStateToProps = ({ 
   globalData,
-  activity
+  activity,
+  i18n
 }) => ({
   globalData,
-  activity
+  activity,
+  i18n: i18n.en.loggedInPage
 });
+
+UserHome.propTypes = {
+  globalData: PropTypes.object.isRequired,
+  activity: PropTypes.object.isRequired,
+  i18n: PropTypes.object.isRequired,
+  dispatchToggleModal: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserHome);

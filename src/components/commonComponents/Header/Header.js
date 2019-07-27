@@ -13,11 +13,11 @@ const Header = ({ i18n, isLoggedIn, userId, onLogin }) => (
   <Navbar.Collapse className="justify-content-end">
     {isLoggedIn && (
       <Navbar.Text>
-        {i18n.en.loggedIn.text} <a href="#login">{userId}</a>
+        {i18n.en.loggedInPage.buttonText} <a href="#login">{userId}</a>
       </Navbar.Text>
     )}
     {!isLoggedIn && (
-      <Button onClick={() => onLogin()}>{i18n.en.notLoggedIn.text}</Button>
+      <Button onClick={() => onLogin()}>{i18n.en.notLoggedInPage.buttonText}</Button>
     )}
   </Navbar.Collapse>
   </Container>

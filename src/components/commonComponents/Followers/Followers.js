@@ -2,29 +2,13 @@ import React from "react";
 
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
-import Figure from "react-bootstrap/Figure";
 
-const Followers = ({ commentsList }) => (
+const Followers = ({ commentsList, i18n }) => (
 <Container>
-    <h4>Recent Comments</h4>
+    <h4>{i18n.commentList.heading}</h4>
     {
-        commentsList && commentsList.splice(0,4).map((comment) => <ListGroup>
-        <ListGroup.Item>
-        <Figure>
-        <Figure.Image 
-          inline
-          width={50}
-          height={50}
-          alt="171x180"
-          src={comment.thumbnailUrl}
-        />
-       
-    
-      </Figure>
-      <span>
-      {comment.title}
-      </span>
-        </ListGroup.Item>
+        commentsList && commentsList.slice(0,4).map((comment, index) => <ListGroup key={index}>
+        <ListGroup.Item>{comment.name}</ListGroup.Item>
         </ListGroup>)
     }
 </Container>)

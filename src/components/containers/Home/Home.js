@@ -1,28 +1,38 @@
 import React from "react";
-import styled from "styled-components";
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-import { connect } from "react-redux";
+import { onLogin } from '../../../actions/loginActions';
 
-const Home = ({ globalData }) => (
-  <div>
+const Home = ({ globalData, i18n, dispatchedOnLogin }) => (<div>
   <Jumbotron>
   <Container>
-    <h1>Hey User</h1>
-    <h4>Check out our new features</h4>
+    <h1>{i18n.banner}</h1>
+    <h4>{i18n.subText}</h4>
     <p>
-      <Button variant="primary">Sign up Now</Button>
+      <Button onClick={() => dispatchedOnLogin()} variant="primary">{i18n.buttonText}</Button>
     </p>
     </Container>
   </Jumbotron>
   </div>
 );
 
-const mapStateToProps = ({ globalData }) => ({
-  globalData
+const mapDispatchToProps = {
+  dispatchedOnLogin: onLogin
+};
+
+const mapStateToProps = ({ globalData, i18n }) => ({
+  globalData,
+  i18n: i18n.en.notLoggedInPage
 });
 
-export default connect()(Home);
+Home.protoTypes = {
+  globalData: PropTypes.object.isRequired,
+  i18n: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 
 import styled from 'styled-components';
 
@@ -11,8 +11,8 @@ const StyledModal = styled('div')`
     left: 0;
     width: 100%;
     height: 100%;
-    content: "df";
-    z-index: 1000;
+    content: " ";
+    z-index: 1;
     background: rgba(0,0,0,0.9);
   }`;
 
@@ -20,7 +20,7 @@ const StyledModal = styled('div')`
     margin: 0 50%;
     position: absolute;
     top: 30%;
-    z-index: 300000;
+    z-index: 2;
     left: -250px;
     width: 500px;
   `;
@@ -30,14 +30,15 @@ const StyledModal = styled('div')`
     showModal,
     onModalClose
   }) {
+    
     return showModal && <StyledModal>
       <StyledDialog>
       <Modal.Header closeButton onClick={() => onModalClose(false, {})}>
-        <Modal.Title>Modal title</Modal.Title>
+        <Modal.Title>{modalContent.title}</Modal.Title>
       </Modal.Header>
     
       <Modal.Body>
-        <p>Modal body text goes here.</p>
+        <Image src={modalContent.url} fluid alt={modalContent.title} />
       </Modal.Body> 
     </StyledDialog>
     </StyledModal>

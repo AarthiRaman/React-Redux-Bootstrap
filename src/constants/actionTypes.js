@@ -1,3 +1,4 @@
 export const ON_LOGIN_CLICK = "ON_LOGIN_CLICK";
 export const LOAD_USER_PHOTOS = "LOAD_USER_PHOTOS";
 export const TOGGLE_MODAL = "TOGGLE_MODAL";
+export const LOAD_USER_COMMENTS = "LOAD_USER_COMMENTS";

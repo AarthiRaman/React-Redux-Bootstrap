@@ -8,6 +8,6 @@ export function toggleModal(showModal, modalContent) {
             type: TOGGLE_MODAL,
             showModal,
             modalContent
-        })
+        });
     }
 }

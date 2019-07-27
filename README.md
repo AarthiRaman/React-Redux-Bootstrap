@@ -12,12 +12,15 @@ npm start
 ## Feature
 
 1. Home Page
-   ![Home Page](HomePage.jpg?raw=true "Title")
+
+   ![Home Page](HomePage.png?raw=true "Title")
 
 2) Logged In Page
+
    ![Logged In Page](LoggedIn.png?raw=true "Title")
 
 3. Picture Viewer
+
    ![Picture Viewer](picViewer.png?raw=true "Title")
 
 ## API Calls Made
@@ -34,6 +37,6 @@ npm start
 ```
 
 ## Demo URL
+
 [Code Sandbox](https://oj6kn.csb.app/)
 [Project Link](https://codesandbox.io/s/react-redux-bootstrap-4534634-0ng12)
-

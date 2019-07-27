@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import Container from "react-bootstrap/Container";
 import Figure from "react-bootstrap/Figure";
@@ -26,4 +27,10 @@ const PhotosList = ({ photosList, onPhotoClick, i18n }) => (<Container xs={6} md
     </Row>
 </Container>)
     
+PhotosList.protoTypes = {
+    photosList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    i18n: PropTypes.object.isRequired,
+    onPhotoClick: PropTypes.func.isRequired,
+};
+
 export default PhotosList;

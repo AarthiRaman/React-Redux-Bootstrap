@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import PropTypes from 'prop-types';
 
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
@@ -24,5 +24,16 @@ const Header = ({ i18n, isLoggedIn, userId, onLogin }) => (
   </Navbar>
 
 );
+
+Header.protoTypes = {
+  isLoggedIn: PropTypes.bool,
+  userId: PropTypes.object.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  i18n: PropTypes.object.isRequired
+};
+
+Header.defaultProps = {
+  isLoggedIn: false
+}
 
 export default Header;

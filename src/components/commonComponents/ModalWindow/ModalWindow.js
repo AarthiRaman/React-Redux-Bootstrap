@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
@@ -25,13 +26,11 @@ const StyledModal = styled('div')`
     width: 500px;
   `;
 
-  function ModalWindow({
+  const ModalWindow = ({
     modalContent,
     showModal,
     onModalClose
-  }) {
-    
-    return showModal && <StyledModal>
+  }) => (showModal && <StyledModal>
       <StyledDialog>
       <Modal.Header closeButton onClick={() => onModalClose(false, {})}>
         <Modal.Title>{modalContent.title}</Modal.Title>
@@ -42,7 +41,16 @@ const StyledModal = styled('div')`
       </Modal.Body> 
     </StyledDialog>
     </StyledModal>
-   
-}
+  )
+
+ModalWindow.protoTypes = {
+  modalContent: PropTypes.object.isRequired,
+  showModal: PropTypes.bool,
+  onModalClose: PropTypes.func.isRequired,
+};
+
+ModalWindow.defaultProps = {
+  showModal: false
+};
 
 export default ModalWindow;

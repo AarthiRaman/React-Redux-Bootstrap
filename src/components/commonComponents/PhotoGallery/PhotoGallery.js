@@ -5,16 +5,18 @@ import Figure from "react-bootstrap/Figure";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-const PhotosList = ({ photosList }) => (
+const PhotosList = ({ photosList, onPhotoClick }) => (
 <Container xs={6} md={9}>
     <h4>Latest Photos</h4>
     <Row >
     {
-        photosList && photosList.map((photo) => <Col md={3} sm={3}>
+        photosList && photosList.map((photo, index) => <Col key={index} md={3} sm={3}>
         <Figure>
             <Figure.Image
                 width={171}
+                
                 height={180}
+                onClick={() => onPhotoClick(true, photo)}
                 alt={photo.title}
                 src={photo.thumbnailUrl}
             />

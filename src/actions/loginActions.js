@@ -25,7 +25,7 @@ export function onLogin(){
       .then(photoData => {
         dispatch({
           type: LOAD_USER_PHOTOS,
-          recentPhotos: photoData.splice(0,15)
+          recentPhotos: photoData 
         });
     
       });

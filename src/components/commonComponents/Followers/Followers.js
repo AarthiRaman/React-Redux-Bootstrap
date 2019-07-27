@@ -8,7 +8,7 @@ const Followers = ({ commentsList }) => (
 <Container>
     <h4>Recent Comments</h4>
     {
-        commentsList && commentsList.splice(0,10).map((comment) => <ListGroup>
+        commentsList && commentsList.splice(0,4).map((comment) => <ListGroup>
         <ListGroup.Item>
         <Figure>
         <Figure.Image 
@@ -19,9 +19,11 @@ const Followers = ({ commentsList }) => (
           src={comment.thumbnailUrl}
         />
        
-          {comment.title}
-       
+    
       </Figure>
+      <span>
+      {comment.title}
+      </span>
         </ListGroup.Item>
         </ListGroup>)
     }

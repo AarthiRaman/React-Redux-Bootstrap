@@ -1,7 +1,12 @@
-import { LOAD_USER_PHOTOS } from "../constants/actionTypes";
+import { 
+  LOAD_USER_PHOTOS,
+  TOGGLE_MODAL
+ } from "../constants/actionTypes";
 
 const initialState = {
-    recentPhotos: []
+  recentPhotos: [],
+  showModal: false,
+  modalContent: {}
 };
 
 export default function activityReducers(state = initialState, action) {
@@ -10,6 +15,13 @@ export default function activityReducers(state = initialState, action) {
       return {
         ...state,
         recentPhotos: action.recentPhotos
+      };
+
+    case TOGGLE_MODAL:
+      return {
+        ...state,
+        showModal: action.showModal,
+        modalContent: action.modalContent
       };
 
     default:
